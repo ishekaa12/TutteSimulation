@@ -1,74 +1,71 @@
-Tutte Embedding Simulation
-https://img.shields.io/badge/Java-17+-blue.svg
-https://img.shields.io/badge/GUI-Swing-orange.svg
-https://img.shields.io/badge/License-MIT-green.svg
+# Tutte Embedding Simulation
+
+![Java](https://img.shields.io/badge/Java-17+-blue.svg)
+![GUI](https://img.shields.io/badge/GUI-Swing-orange.svg)
 
 An interactive visualization of Tutte's Theorem - watch planar graphs untangle themselves in real-time!
 
-https://demo.gif ()
+## 🎯 What is Tutte's Embedding?
 
-🎯 What is Tutte's Embedding?
 Tutte's Theorem (1963) states that if you take a 3-connected planar graph, fix its outer face as a convex polygon, and place each interior vertex at the average (barycenter) of its neighbors, you get a perfect planar straight-line drawing.
 
-This simulation makes that mathematical theorem visually intuitive!
+**This simulation makes that mathematical theorem visually intuitive!**
 
-✨ Features
-Real-time visualization of graph untangling
+## ✨ Features
 
-Interactive controls: Click to pin vertices, drag to reposition
+- **Real-time visualization** of graph untangling
+- **Interactive controls**: Click to pin vertices, drag to reposition
+- **Multiple graph types**: Grid graphs with customizable layouts
+- **Step-by-step animation** with adjustable speed
+- **Smooth animations** with a clean GUI
+- **Educational tool** for understanding graph theory concepts
 
-Multiple graph types: Grid graphs, customizable layouts
+## 🚀 Getting Started
 
-Step-by-step animation with adjustable speed
+### Prerequisites
 
-Beautiful GUI with smooth animations
+- Java JDK 8 or higher
+- Git (for cloning)
 
-Educational tool for graph theory concepts
+### Installation & Running
 
-
-🚀 Getting Started
-Prerequisites
-Java JDK 8 or higher
-
-Git (for cloning)
-
-Installation & Running
-bash
-# 1. Clone the repository
+```bash
+# Clone the repository
 git clone https://github.com/ishekaa12/TutteSimulation.git
 cd TutteSimulation
 
-# 2. Compile (if needed)
+# Compile
 javac TutteSimulation.java
 
-# 3. Run the simulation
+# Run the simulation
 java TutteSimulation
-Or just double-click the .jar file if available!
+```
 
-🎮 How to Use
-Watch the magic: The graph automatically untangles itself
+## 🎮 How to Use
 
-Interact:
+1. **Watch the magic**: The graph automatically untangles itself
+2. **Interact with vertices**:
+   - Click on any blue vertex to pin it (turns red)
+   - Drag red vertices to reshape the embedding
+3. **Keyboard controls**:
+   - `Spacebar` - Pause/resume animation
+   - `R` key - Reset to random positions
+4. **Experiment**: Modify the code to try different graph structures
 
-Click on any blue vertex to pin it (red)
+## 🧠 How It Works
 
-Drag red vertices to reshape the embedding
+### The Algorithm
 
-Spacebar to pause/resume animation
-
-R key to reset to random positions
-
-Experiment with different graph structures by modifying the code
-
-🧠 How It Works - The Algorithm
-Mathematical Core
 For each interior vertex v at position (x, y):
 
-text
+```
 x_new = average(x_coordinates of all neighbors)
 y_new = average(y_coordinates of all neighbors)
-Code Implementation
-java
+```
+
+### Code Implementation
+
+```java
 // The heart of Tutte's algorithm
 for (Point p : points) {
     if (!p.fixed) {
@@ -81,110 +78,106 @@ for (Point p : points) {
         p.newY = sumY / p.neighbors.size();  // calculation
     }
 }
-Key Components
-Fixed Boundary: 3 vertices form a triangle (convex polygon)
+```
 
-Barycentric Coordinates: Each vertex = convex combination of neighbors
+### Key Components
 
-Iterative Solution: Jacobi method for solving linear equations
+- **Fixed Boundary**: 3 vertices form a triangle (convex polygon)
+- **Barycentric Coordinates**: Each vertex is a convex combination of its neighbors
+- **Iterative Solution**: Uses Jacobi method for solving linear equations
+- **Planar Guarantee**: Tutte's theorem ensures no edge crossings
 
-Planar Guarantee: Tutte's theorem ensures no edge crossings
+## 📁 Project Structure
 
-📁 Project Structure
-text
+```
 TutteSimulation/
 ├── src/
 │   └── TutteSimulation.java    # Main simulation class
-├── screenshots/                # Demo images
-├── README.md                   # This file
-└── .gitignore
-Main Classes
-TutteSimulation: Main JPanel with rendering and animation
+└── README.md                   # This file
+```
 
-Point: Inner class representing graph vertices
+### Main Classes
 
-GUI Components: Swing-based interactive interface
+- **TutteSimulation**: Main JPanel with rendering and animation logic
+- **Point**: Inner class representing graph vertices
+- **GUI Components**: Swing-based interactive interface
 
-🔧 Customization
-Change Graph Size
-java
+## 🔧 Customization Ideas
+
+### Change Graph Size
+
+```java
 // In TutteSimulation constructor
-int rows = 6, cols = 6;  // 36 vertices instead of 16
-Adjust Animation Speed
-java
+int rows = 6, cols = 6;  // Creates a 6x6 grid (36 vertices instead of 16)
+```
+
+### Adjust Animation Speed
+
+```java
 // In updatePositions() method
-double blend = 0.2;  // Faster movement (was 0.1)
-Different Boundary Shapes
-java
-// Try a square boundary instead of triangle
-grid[0][0].fixed = true;        // Top-left
-grid[0][cols-1].fixed = true;   // Top-right
-grid[rows-1][0].fixed = true;   // Bottom-left
-grid[rows-1][cols-1].fixed = true; // Bottom-right
- Learning Resources
-Concepts Illustrated
-Tutte's Theorem (1963)
+double blend = 0.2;  // Faster movement (default is 0.1)
+```
 
-Barycentric Coordinates
+### Try Different Boundary Shapes
 
-Planar Graph Drawing
+```java
+// Create a square boundary instead of triangle
+grid[0][0].fixed = true;              // Top-left
+grid[0][cols-1].fixed = true;         // Top-right
+grid[rows-1][0].fixed = true;         // Bottom-left
+grid[rows-1][cols-1].fixed = true;    // Bottom-right
+```
 
-Laplacian Smoothing
+## 📚 What You'll Learn
 
-Linear Systems (iterative solutions)
+### Concepts Illustrated
 
-Graph 3-Connectivity
+- Tutte's Theorem (1963)
+- Barycentric Coordinates
+- Planar Graph Drawing
+- Laplacian Smoothing
+- Linear Systems (iterative solutions)
+- Graph 3-Connectivity
 
-Real-World Applications
-Network Visualization (untangling complex graphs)
+### Real-World Applications
 
-VLSI Chip Design (component placement without crossings)
+- **Network Visualization**: Untangling complex graphs
+- **VLSI Chip Design**: Component placement without crossings
+- **Mesh Generation**: 3D computer graphics
+- **Cartography**: Map drawing algorithms
 
-Mesh Generation (3D computer graphics)
+## 🧪 Try These Experiments
 
-Cartography (map drawing algorithms)
+1. **Add more fixed points**: Click multiple vertices to create different boundary shapes
+2. **Change neighbor connections**: Modify the grid connection logic for different graph types
+3. **Visualize convergence**: Add energy calculation to see when the graph stabilizes
+4. **Different initial layouts**: Start with circular, spiral, or clustered arrangements
 
- Try These Experiments
-Add more fixed points: Click vertices to create different boundary shapes
+## 🤝 Contributing
 
-Change neighbor connections: Modify the grid connection logic
+Contributions are welcome! Here's how:
 
-Visualize convergence: Add energy calculation to see when graph stabilizes
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-idea`)
+3. Commit your changes (`git commit -m 'Add amazing idea'`)
+4. Push to the branch (`git push origin feature/amazing-idea`)
+5. Open a Pull Request
 
-Different initial layouts: Start with circular or random arrangements
+## 👨‍🏫 Perfect For
 
-🤝 Contributing
-Found a bug? Have a cool feature idea? Contributions welcome!
+- **Computer Science students** learning graph theory
+- **Mathematics students** exploring planar embeddings
+- **Educators** teaching algorithmic visualization
+- **Researchers** prototyping graph drawing algorithms
 
-Fork the repository
+## 🙏 Acknowledgments
 
-Create a feature branch (git checkout -b feature/amazing-idea)
+- William T. Tutte for the foundational theorem (1963)
+- Java Swing team for the GUI framework
+- Graph Drawing community for continuous inspiration
 
-Commit changes (git commit -m 'Add amazing idea')
+---
 
-Push to branch (git push origin feature/amazing-idea)
+**"Watch mathematics come to life, one vertex at a time!"**
 
-Open a Pull Request
-
-
-
- Educational Value
-Perfect for:
-
-Computer Science students learning graph theory
-
-Mathematics students exploring planar embeddings
-
-Educators teaching algorithmic visualization
-
-Researchers prototyping graph drawing algorithms
-
- Acknowledgments
-William T. Tutte for the foundational theorem (1963)
-
-Java Swing team for the GUI framework
-
-Graph Drawing community for continuous inspiration
-
-Made with ❤️ by [Isheka]
-"Watch mathematics come to life, one vertex at a time!"
+Made by [ishekaa12](https://github.com/ishekaa12)
